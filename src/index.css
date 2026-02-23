@@ -1,3 +1,240 @@
-body { margin:0; font-family:Arial,Helvetica,sans-serif; }
-.grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 4px; }
-button { cursor:pointer; }
+/* TicTacToe Styles */
+.game-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+}
+
+/* Title */
+.title-section {
+  text-align: center;
+  margin-bottom: 1.5rem;
+}
+
+.title {
+  font-size: 2.5rem;
+  font-weight: 800;
+  background: linear-gradient(90deg, #60a5fa, #8b5cf6, #f472b6);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  margin-bottom: 0.5rem;
+  line-height: 1.2;
+}
+
+@media (min-width: 768px) {
+  .title {
+    font-size: 3rem;
+  }
+}
+
+.subtitle {
+  color: #64748b;
+  font-size: 1rem;
+}
+
+/* Status Box */
+.status-box {
+  margin-bottom: 1.5rem;
+  padding: 1rem;
+  background: rgba(255, 255, 255, 0.5);
+  backdrop-filter: blur(10px);
+  border-radius: 1rem;
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  min-width: 280px;
+  text-align: center;
+}
+
+.status-content {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.75rem;
+  font-size: 1.25rem;
+}
+
+.status-label {
+  color: #475569;
+}
+
+.status-player {
+  font-weight: 700;
+}
+
+.status-player.x {
+  color: #3b82f6;
+}
+
+.status-player.o {
+  color: #ef4444;
+}
+
+.winner-display {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  animation: bounce 1s infinite;
+}
+
+.trophy {
+  font-size: 1.5rem;
+}
+
+.winner-text {
+  font-weight: 700;
+  color: #ca8a04;
+}
+
+.draw-display {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: #64748b;
+}
+
+/* Game Board */
+.game-board {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0.75rem;
+  padding: 1.25rem;
+  background: rgba(255, 255, 255, 0.3);
+  backdrop-filter: blur(10px);
+  border-radius: 1.5rem;
+  border: 1px solid rgba(255, 255, 255, 0.5);
+}
+
+/* Squares */
+.square {
+  width: 80px;
+  height: 80px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 2rem;
+  font-weight: 700;
+  border-radius: 1rem;
+  border: 2px solid;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.05);
+  background: rgba(255, 255, 255, 0.8);
+  backdrop-filter: blur(4px);
+  border-color: rgba(255, 255, 255, 0.5);
+  color: #94a3b8;
+}
+
+.square:hover:not(:disabled) {
+  background: #ffffff;
+  transform: scale(1.05);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+}
+
+.square:active:not(:disabled) {
+  transform: scale(0.95);
+}
+
+@media (min-width: 768px) {
+  .square {
+    width: 100px;
+    height: 100px;
+    font-size: 2.5rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  .square {
+    width: 120px;
+    height: 120px;
+    font-size: 3rem;
+  }
+}
+
+/* Square States */
+.square.x {
+  background: rgba(59, 130, 246, 0.1);
+  border-color: #93c5fd;
+  color: #3b82f6;
+  cursor: default;
+  box-shadow: 0 4px 15px rgba(59, 130, 246, 0.2);
+}
+
+.square.o {
+  background: rgba(239, 68, 68, 0.1);
+  border-color: #fca5a5;
+  color: #ef4444;
+  cursor: default;
+  box-shadow: 0 4px 15px rgba(239, 68, 68, 0.2);
+}
+
+.square.winning {
+  background: #fde047 !important;
+  border-color: #fcd34d !important;
+  color: #713f12 !important;
+  box-shadow: 0 4px 20px rgba(253, 224, 71, 0.5) !important;
+  transform: scale(1.05);
+  animation: pulse 2s infinite;
+}
+
+.square:disabled:not(.winning) {
+  opacity: 1;
+}
+
+/* Reset Button */
+.reset-button {
+  margin-top: 1.5rem;
+  padding: 0.75rem 1.5rem;
+  background: #22c55e;
+  color: white;
+  font-weight: 700;
+  font-size: 1.125rem;
+  border: none;
+  border-radius: 1rem;
+  box-shadow: 0 10px 20px rgba(34, 197, 94, 0.3);
+  cursor: pointer;
+  transition: all 0.2s ease;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.reset-button:hover {
+  background: #16a34a;
+  transform: scale(1.05);
+  box-shadow: 0 15px 30px rgba(34, 197, 94, 0.4);
+}
+
+.reset-button:active {
+  transform: scale(0.95);
+}
+
+.reset-icon {
+  font-size: 1.25rem;
+}
+
+/* Animations */
+@keyframes bounce {
+  0%, 100% {
+    transform: translateY(-25%);
+    animation-timing-function: cubic-bezier(0.8, 0, 1, 1);
+  }
+  50% {
+    transform: translateY(0);
+    animation-timing-function: cubic-bezier(0, 0, 0.2, 1);
+  }
+}
+
+@keyframes pulse {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.8;
+  }
+}
+
+/* Player Icons in Status */
+.player-icon {
+  font-size: 1.5rem;
+}
