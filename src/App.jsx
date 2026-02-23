@@ -2,8 +2,8 @@ import TicTacToe from "./components/TicTacToe";
 
 function App() {
   return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 flex items-center justify-center p-4">
-      <div className="p-6 md:p-8 bg-slate-900/80 backdrop-blur-xl rounded-3xl shadow-2xl border border-slate-700/50 max-w-lg w-full">
+    <div className="min-h-screen bg-gradient-to-br from-slate-100 via-blue-50 to-purple-100 flex items-center justify-center p-4">
+      <div className="p-6 md:p-8 bg-white/70 backdrop-blur-xl rounded-3xl shadow-2xl border border-white/50 max-w-2xl w-full">
         <TicTacToe />
       </div>
     </div>
