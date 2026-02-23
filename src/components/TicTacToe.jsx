@@ -48,7 +48,7 @@ export default function TicTacToe() {
 
   return (
     <div className="flex flex-col items-center">
-      <h2 className="text-xl font-semibold mb-2">Boter Kaas en Eieren</h2>
+      <h2 className="text-2xl font-bold mb-4 text-blue-600">🎮 Boter Kaas en Eieren</h2>
       {winner ? (
         <p className="text-lg font-medium mb-2">Winner: {winner}</p>
       ) : (
